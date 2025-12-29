@@ -3,46 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Ganesh Sunkari </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }
-        header { text-align: center; padding: 50px 0; }
-        h1 { color: #333; }
-        .project { border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
-        .contact-btn { background: #333; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; }
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --bg-color: #0f172a;       /* Deep Navy/Dark Background */
+            --card-bg: #1e293b;        /* Slightly lighter for cards */
+            --text-main: #e2e8f0;      /* Light gray text */
+            --text-muted: #94a3b8;     /* Muted text */
+            --accent: #38bdf8;         /* Cyan/Blue Accent */
+            --accent-hover: #0ea5e9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section { padding: 60px 0; }
+
+        h1, h2, h3 { color: #fff; margin-bottom: 15px; }
+        h2 { 
+            font-size: 2rem; 
+            border-bottom: 2px solid var(--accent); 
+            display: inline-block; 
+            margin-bottom: 40px;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
+        .hero h1 span { color: var(--accent); }
+        .hero .subtitle { font-size: 1.5rem; color: var(--text-muted); margin-bottom: 30px; }
+        
+        .social-links a {
+            font-size: 1.8rem;
+            margin-right: 20px;
+            color: var(--text-muted);
+        }
+        .social-links a:hover { color: var(--accent); transform: translateY(-3px); display: inline-block; }
+
+        /* --- ABOUT SECTION --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .highlight-box {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        /* --- SKILLS SECTION --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .skill-category h3 { color: var(--accent); }
+        .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+        .tag {
+            background: #334155;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        /* --- PROJECTS SECTION --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover { transform: translateY(-5px); }
+        .project-card h3 { font-size: 1.4rem; }
+        .project-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
+        .project-links a {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .project-links a:hover { text-decoration: underline; }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid #334155;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero .subtitle { font-size: 1.2rem; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Hi, I'm [Your Name]</h1>
-        <p>Full Stack Developer | Tech Enthusiast</p>
-        <a href="mailto:your-email@example.com" class="contact-btn">Contact Me</a>
-    </header>
-
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Write a brief introduction here. Mention your degree, what you are learning, and your goals.</p>
+    <section class="hero container">
+        <p style="color: var(--accent);">Hi, my name is</p>
+        <h1>Ganesh <span>Sunkari</span>.</h1>
+        <p class="subtitle">Web3 Full Stack Developer | Blockchain Enthusiast</p>
+        <p style="max-width: 600px; color: var(--text-muted); margin-bottom: 30px;">
+            I build accessible blockchain applications and secure smart contracts. 
+            Currently a Computer Science student at RGUKT Nuzvid with experience building on Ethereum,Solana and MERN.
+        </p>
+        
+        <div class="social-links">
+            <a href="https://github.com/GaneshSunkari" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/ganesh-sunkari-20151826a/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:ganeshsunkari197@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
     </section>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        
-        <div class="project">
-            <h3>Project Name 1</h3>
-            <p>Description of the project. What problem did it solve? What tech did you use?</p>
-            <a href="#">View Code</a>
-        </div>
+    <section id="about" class="container">
+        <h2>About Me</h2>
+        <div class="about-grid">
+            <p style="color: var(--text-muted); margin-bottom: 20px;">
+                I am a passionate developer focused on the intersection of Full Stack Web Development and Blockchain technology. 
+                I have experience building end-to-end DApps and solving complex data structure problems (200+ day streak on GeeksforGeeks).
+            </p>
+            
+            <div class="highlight-box">
+                <h3>Experience</h3>
+                <p><strong>Web3 Full Stack Developer Intern @ Ohm Oudits PVT LTD</strong> <br>
+                <span style="font-size: 0.9rem; color: var(--text-muted);">(June 2025 - Oct 2025)</span></p>
+                <ul style="margin-top: 10px; margin-left: 20px; list-style-type: disc; color: var(--text-muted);">
+                    <li>Built end-to-end Web3 apps using React.js and Web3.js.</li>
+                    <li>Implemented secure Solidity smart contracts and MetaMask integration.</li>
+                </ul>
+            </div>
 
-        <div class="project">
-            <h3>Project Name 2</h3>
-            <p>Description of the project. What problem did it solve? What tech did you use?</p>
-            <a href="#">View Code</a>
+            <div class="highlight-box" style="margin-top: 20px;">
+                <h3>Education</h3>
+                <p><strong>B.Tech in Computer Science</strong> @ RGUKT, Nuzvid</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">Expected 2026 | GPA: 8.7/10.0</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="container">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3><i class="fas fa-cubes"></i> Blockchain</h3>
+                <div class="tags">
+                    <span class="tag">Solidity</span>
+                    <span class="tag">Rust</span>
+                    <span class="tag">Ethereum EVM</span>
+                    <span class="tag">Solana</span>
+                    <span class="tag">Foundry</span>
+                    <span class="tag">Web3.js</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3><i class="fas fa-code"></i> Web Development</h3>
+                <div class="tags">
+                    <span class="tag">React.js</span>
+                    <span class="tag">Node.js</span>
+                    <span class="tag">Express.js</span>
+                    <span class="tag">MongoDB</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">HTML/CSS</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-tools"></i> Core & Tools</h3>
+                <div class="tags">
+                    <span class="tag">C++</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Data Structures</span>
+                    <span class="tag">Git & GitHub</span>
+                    <span class="tag">VS Code</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <h3>Crypto Pay</h3>
+                <p>
+                    An application enabling Ethereum transactions through QR codes. 
+                    Integrated MetaMask for secure wallet connections and real-time ETH balance display.
+                </p>
+                <div class="tags" style="margin-bottom: 15px;">
+                    <span class="tag">React</span>
+                    <span class="tag">MetaMask</span>
+                    <span class="tag">Web3.js</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/GaneshSunkari/QR_Payment_App" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Shopping DApp</h3>
+                <p>
+                    A decentralized marketplace with an escrow mechanism to secure buyer funds. 
+                    Features transparent order management on-chain, tested with Foundry.
+                </p>
+                <div class="tags" style="margin-bottom: 15px;">
+                    <span class="tag">Solidity</span>
+                    <span class="tag">Foundry</span>
+                    <span class="tag">Smart Contracts</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/GaneshSunkari/Shopping_DAPP" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Hostel Monitoring System</h3>
+                <p>
+                    A web portal for hostel admins to manage complaints and assign caretakers. 
+                    Includes a Bus Reservation System for travel allocation.
+                </p>
+                <div class="tags" style="margin-bottom: 15px;">
+                    <span class="tag">React.js</span>
+                    <span class="tag">Admin Dashboard</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/GaneshSunkari/HMS_Web" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Product Management System</h3>
+                <p>
+                    Full-stack MERN CRUD application. Implemented RESTful APIs for adding 
+                    and listing products with real-time updates and validation.
+                </p>
+                <div class="tags" style="margin-bottom: 15px;">
+                    <span class="tag">MongoDB</span>
+                    <span class="tag">Express</span>
+                    <span class="tag">React</span>
+                    <span class="tag">Node</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/GaneshSunkari/Product-Management" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <footer>
-        <p>Connect with me on <a href="#">LinkedIn</a> and <a href="#">GitHub</a>.</p>
+        <div class="container">
+            <p>Designed & Built by Ganesh Sunkari</p>
+            <p style="font-size: 0.8rem; margin-top: 10px;">
+                <a href="mailto:ganeshsunkari197@gmail.com">ganeshsunkari197@gmail.com</a>
+            </p>
+        </div>
     </footer>
 
 </body>
